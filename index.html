@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Litigation | Lawsuit & Complex Case Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #fafcff;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: #c9a03d;
+            border-radius: 2px;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 34px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: #9b2c2c;
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 44, 44, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #7f2323;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(155, 44, 44, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #1e3a5f;
+            border: 1.5px solid #1e3a5f;
+        }
+
+        .btn-outline:hover {
+            background: #1e3a5f;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: #c9a03d;
+            color: #1e293b;
+            box-shadow: 0 4px 12px rgba(201, 160, 61, 0.2);
+        }
+
+        .btn-accent:hover {
+            background: #b38f2e;
+            transform: translateY(-3px);
+        }
+
+        /* Header / Nav */
+        header {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #9b2c2c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #9b2c2c;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #1e3a5f;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(105deg, #0a1927 0%, #0f2c3b 100%);
+            color: white;
+            padding: 200px 0 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* About */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.02);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.4rem;
+            color: #334155;
+        }
+
+        /* Specialization Cards */
+        .specialization {
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .spec-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 28px;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.05);
+            transition: all 0.35s ease;
+            border: 1px solid #eef2f6;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.12);
+            border-color: #e2e8f0;
+        }
+
+        .spec-card i {
+            font-size: 2.8rem;
+            color: #9b2c2c;
+            margin-bottom: 1.5rem;
+        }
+
+        .spec-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: #f8fafd;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .case-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .case-content {
+            padding: 28px;
+        }
+
+        .case-tag {
+            display: inline-block;
+            background: #fef3e2;
+            color: #b47c2e;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #102b3f 0%, #1e3a5f 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: white;
+        }
+
+        .cta h2:after {
+            background: #c9a03d;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: 25px auto 35px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 45px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #c9a03d;
+        }
+
+        .contact-info i {
+            width: 28px;
+            color: #c9a03d;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e293b;
+            font-size: 0.85rem;
+        }
+
+        /* ========= RE-ENTRANCE ANIMATIONS (scroll up/down) ========= */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.animated > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+        .stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
+        .stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+
+        /* Hero specific entrance (only once on load) */
+        .hero-title, .hero-subtext, .hero-btns {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .hero-title { animation-delay: 0.1s; }
+        .hero-subtext { animation-delay: 0.3s; }
+        .hero-btns { animation-delay: 0.5s; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .about-content { flex-direction: column; }
+            section { padding: 70px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                z-index: 999;
+                gap: 1.5rem;
+            }
+            .nav-links.active { transform: translateY(0); }
+            .hero { padding: 160px 0 100px; }
+            .hero-btns { flex-direction: column; align-items: stretch; }
+            .btn { text-align: center; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.3rem; }
+            h2 { font-size: 1.9rem; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">Legal<span>Advocate</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#specialization">Expertise</a></li>
+                <li><a href="#cases">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Strategic Litigation for High-Stakes Lawsuits</h1>
+            <p class="hero-subtext">15+ years of courtroom excellence · $500M+ recovered for clients · Aggressive, intelligent representation when you need it most.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Free Case Evaluation</a>
+                <a href="#cases" class="btn btn-outline">View Notable Wins</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-img animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Attorney at law">
+            </div>
+            <div class="about-text animate-on-scroll">
+                <h2>Proven Litigator & Trial Attorney</h2>
+                <p>I am a dedicated litigation attorney with a track record of successfully resolving complex lawsuits, from commercial disputes to catastrophic injury claims. My practice is rooted in meticulous strategy, uncompromising preparation, and client-first advocacy.</p>
+                <p>Over 200 cases litigated with a 92% success rate, including precedent-setting verdicts. Recognized by <strong>The National Trial Lawyers</strong> as "Top 100 Litigation Attorney" and featured in <em>Law360</em> for groundbreaking class action work.</p>
+                <p>Whether you are facing a corporate giant or need aggressive representation in a personal lawsuit, I bring the full force of experience and legal intellect to your side.</p>
+                <a href="#contact" class="btn btn-primary" style="margin-top: 10px;">Schedule Consultation →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Specialization -->
+<section id="specialization" class="specialization">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Areas of Litigation Focus</h2>
+            <p>I handle complex lawsuits across multiple disciplines with precision and determination.</p>
+        </div>
+        <div class="spec-grid stagger-children">
+            <div class="spec-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Commercial Litigation</h3>
+                <p>Contract disputes, partnership conflicts, shareholder derivative actions, and high-value business torts.</p>
+            </div>
+            <div class="spec-card">
+                <i class="fas fa-user-injured"></i>
+                <h3>Catastrophic Injury</h3>
+                <p>Medical malpractice, product liability, wrongful death, and severe personal injury claims.</p>
+            </div>
+            <div class="spec-card">
+                <i class="fas fa-gavel"></i>
+                <h3>Employment Litigation</h3>
+                <p>Discrimination, whistleblower retaliation, wage & hour class actions, and non-compete disputes.</p>
+            </div>
+            <div class="spec-card">
+                <i class="fas fa-landmark"></i>
+                <h3>Class Action & Mass Torts</h3>
+                <p>Consumer fraud, securities litigation, and multidistrict litigation (MDL) for widespread harm.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section id="cases" class="case-studies">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2>Selected Case Victories</h2>
+            <p>Real results that demonstrate strategic excellence.</p>
+        </div>
+        <div class="case-grid stagger-children">
+            <div class="case-card">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Commercial Litigation</div>
+                    <h3>$42M Contract Verdict</h3>
+                    <p>Secured a unanimous jury verdict for a tech firm in a breach of contract lawsuit against a multinational corporation after a three‑week trial.</p>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Medical Malpractice</div>
+                    <h3>$12.5M Settlement</h3>
+                    <p>Wrongful death claim against hospital system – negotiated one of the largest confidential settlements in the state.</p>
+                </div>
+            </div>
+            <div class="case-card">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1551135049-8a33b2fb2f7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Class Action</div>
+                    <h3>$180M Consumer Fund</h3>
+                    <p>Lead counsel in nationwide class action against pharmaceutical giant, resulting in landmark settlement for affected consumers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Contact -->
+<section id="contact" class="cta">
+    <div class="container">
+        <h2 class="animate-on-scroll">Facing a Lawsuit? Let’s Talk Strategy.</h2>
+        <p class="animate-on-scroll">Time is critical in litigation. Contact me for a confidential, no‑obligation consultation. I’ll review your case and outline the strongest path forward.</p>
+        <a href="#" class="btn btn-accent" id="consultBtn">Request Confidential Consultation →</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Legal Advocate</h4>
+                <p>Complex litigation representation with an unwavering commitment to justice.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Attorney Profile</a></li>
+                    <li><a href="#specialization">Practice Areas</a></li>
+                    <li><a href="#cases">Case Results</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 400 Legal Avenue Abuja, Suite 1200<br> loc</p>
+                    <p><i class="fas fa-phone"></i> +234 703 258 9038</p>
+                    <p><i class="fas fa-envelope"></i> yourgmailaddress.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Legal Advocate, P.C. | Attorney Advertising. Prior results do not guarantee similar outcomes.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile navigation toggle
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                navLinks?.classList.remove('active');
+                window.scrollTo({
+                    top: target.offsetTop - 90,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // INTERSECTION OBSERVER (RE-ANIMATES ON EVERY SCROLL IN/OUT)
+    // For individual elements with .animate-on-scroll
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const staggerParents = document.querySelectorAll('.stagger-children');
+
+    const observerOptions = {
+        threshold: 0.2,          // trigger when 20% of element is visible
+        rootMargin: "0px 0px -20px 0px" // slight offset for smoother feel
+    };
+
+    const handleIntersect = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            } else {
+                entry.target.classList.remove('animated');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    // Observe each animate-on-scroll element
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Observe each stagger parent (the grid containers)
+    staggerParents.forEach(parent => observer.observe(parent));
+
+    // Also ensure that any element already visible on load gets the class
+    // (the observer will trigger quickly, but we force a small check for consistency)
+    window.addEventListener('load', () => {
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('animated');
+            }
+        });
+        staggerParents.forEach(parent => {
+            const rect = parent.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                parent.classList.add('animated');
+            }
+        });
+    });
+
+    // Simulated consultation alert
+    const consultBtn = document.getElementById('consultBtn');
+    if (consultBtn) {
+        consultBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Thank you for reaching out. A member of our legal team will contact you within 24 hours to schedule your confidential consultation.");
+        });
+    }
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navLinks?.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+</script>
+</body>
+</html>
