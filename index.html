@@ -317,6 +317,7 @@
             overflow: hidden;
             box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.06);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .case-card:hover {
@@ -344,6 +345,175 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: 0.3px;
+        }
+
+        .case-short-desc {
+            color: #475569;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+
+        /* Modal (Individual Case Page) with enhanced animations */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            width: 90%;
+            margin: 40px auto;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            transition: opacity 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal.active .modal-content {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            position: relative;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .modal-header .modal-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #c9a03d;
+            color: #1e293b;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 2;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.4rem;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .modal-close:hover {
+            background: #9b2c2c;
+        }
+
+        /* Back button */
+        .modal-back {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-back:hover {
+            background: #1e3a5f;
+            transform: translateX(-3px);
+        }
+
+        .modal-body {
+            padding: 40px 42px;
+        }
+
+        .modal-body h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-body h2:after {
+            width: 50px;
+        }
+
+        .modal-body .award {
+            color: #9b2c2c;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: inline-block;
+            border-left: 3px solid #c9a03d;
+            padding-left: 15px;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .modal-body h4 {
+            margin: 25px 0 10px 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                padding: 28px 24px;
+            }
+            .modal-header {
+                height: 200px;
+            }
+            .modal-body h2 {
+                font-size: 1.6rem;
+            }
+            .modal-back {
+                bottom: 12px;
+                left: 12px;
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
         }
 
         /* CTA */
@@ -422,7 +592,7 @@
             font-size: 0.85rem;
         }
 
-        /* ========= RE-ENTRANCE ANIMATIONS (scroll up/down) ========= */
+        /* Entrance Animations */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(35px);
@@ -434,7 +604,6 @@
             transform: translateY(0);
         }
 
-        /* Stagger children */
         .stagger-children > * {
             opacity: 0;
             transform: translateY(25px);
@@ -450,8 +619,9 @@
         .stagger-children > *:nth-child(2) { transition-delay: 0.1s; }
         .stagger-children > *:nth-child(3) { transition-delay: 0.2s; }
         .stagger-children > *:nth-child(4) { transition-delay: 0.3s; }
+        .stagger-children > *:nth-child(5) { transition-delay: 0.4s; }
+        .stagger-children > *:nth-child(6) { transition-delay: 0.5s; }
 
-        /* Hero specific entrance (only once on load) */
         .hero-title, .hero-subtext, .hero-btns {
             opacity: 0;
             transform: translateY(30px);
@@ -469,7 +639,6 @@
             }
         }
 
-        /* Responsive */
         @media (max-width: 992px) {
             h1 { font-size: 3rem; }
             h2 { font-size: 2.2rem; }
@@ -512,7 +681,7 @@
 <header>
     <div class="container">
         <nav class="navbar">
-            <a href="#" class="logo">Doctor of <span>Law</span></a>
+            <a href="#" class="logo">Legal<span>Advocate</span></a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -589,43 +758,81 @@
     </div>
 </section>
 
-<!-- Case Studies -->
+<!-- Case Studies (6 Cases) -->
 <section id="cases" class="case-studies">
     <div class="container">
         <div class="section-header animate-on-scroll">
             <h2>Selected Case Victories</h2>
-            <p>Real results that demonstrate strategic excellence.</p>
+            <p>Real results that demonstrate strategic excellence. Click any case to read the full story.</p>
         </div>
         <div class="case-grid stagger-children">
-            <div class="case-card">
+            <div class="case-card" data-case="case1">
                 <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="case-content">
                     <div class="case-tag">Commercial Litigation</div>
                     <h3>$42M Contract Verdict</h3>
-                    <p>Secured a unanimous jury verdict for a tech firm in a breach of contract lawsuit against a multinational corporation after a three‑week trial.</p>
+                    <p class="case-short-desc">Secured a unanimous jury verdict for a tech firm against a multinational corporation after a three‑week trial.</p>
                 </div>
             </div>
-            <div class="case-card">
+            <div class="case-card" data-case="case2">
                 <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="case-content">
                     <div class="case-tag">Medical Malpractice</div>
                     <h3>$12.5M Settlement</h3>
-                    <p>Wrongful death claim against hospital system – negotiated one of the largest confidential settlements in the state.</p>
+                    <p class="case-short-desc">Wrongful death claim against hospital system – negotiated one of the largest confidential settlements in the state.</p>
                 </div>
             </div>
-            <div class="case-card">
+            <div class="case-card" data-case="case3">
                 <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1551135049-8a33b2fb2f7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="case-content">
                     <div class="case-tag">Class Action</div>
                     <h3>$180M Consumer Fund</h3>
-                    <p>Lead counsel in nationwide class action against pharmaceutical giant, resulting in landmark settlement for affected consumers.</p>
+                    <p class="case-short-desc">Lead counsel in nationwide class action against pharmaceutical giant, resulting in landmark settlement.</p>
+                </div>
+            </div>
+            <div class="case-card" data-case="case4">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Employment Litigation</div>
+                    <h3>$8.7M Whistleblower Verdict</h3>
+                    <p class="case-short-desc">Represented a senior executive fired after reporting securities fraud — verdict including punitive damages.</p>
+                </div>
+            </div>
+            <div class="case-card" data-case="case5">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Product Liability</div>
+                    <h3>$23M Defective Medical Device</h3>
+                    <p class="case-short-desc">Held manufacturer accountable for faulty hip implant that caused severe injuries to 14 plaintiffs.</p>
+                </div>
+            </div>
+            <div class="case-card" data-case="case6">
+                <div class="case-img" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="case-content">
+                    <div class="case-tag">Intellectual Property</div>
+                    <h3>$15M Trade Secret Theft</h3>
+                    <p class="case-short-desc">Recovered stolen proprietary technology and secured injunction against former business partners.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA Contact -->
+<!-- Modal -->
+<div id="caseModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalHeader">
+            <span class="modal-tag" id="modalTag"></span>
+            <div class="modal-close">&times;</div>
+            <button class="modal-back" id="modalBackBtn"><i class="fas fa-arrow-left"></i> Back to Cases</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Dynamic content -->
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
 <section id="contact" class="cta">
     <div class="container">
         <h2 class="animate-on-scroll">Facing a Lawsuit? Let’s Talk Strategy.</h2>
@@ -654,9 +861,9 @@
             <div class="footer-col">
                 <h4>Contact</h4>
                 <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> 400 Legal Avenue Abuja, Suite 1200<br> loc</p>
-                    <p><i class="fas fa-phone"></i> +234 703 258 9038</p>
-                    <p><i class="fas fa-envelope"></i> yourgmailaddress.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 400 Legal Avenue, Suite 1200<br>New York, NY 10022</p>
+                    <p><i class="fas fa-phone"></i> (212) 555-7890</p>
+                    <p><i class="fas fa-envelope"></i> counsel@legaladvocate.com</p>
                 </div>
             </div>
         </div>
@@ -667,16 +874,131 @@
 </footer>
 
 <script>
-    // Mobile navigation toggle
+    // Case data (full stories)
+    const caseDetails = {
+        case1: {
+            tag: "Commercial Litigation",
+            title: "$42M Contract Verdict",
+            award: "Jury Verdict · Unanimous Decision",
+            headerImg: "https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>Our client, a mid‑sized technology firm, entered into a multi‑year development agreement with a multinational corporation. After delivering all milestones, the corporation refused payment, claiming technical defaults that were never specified in the contract. The dispute escalated into a high‑stakes lawsuit with over $42 million in damages at stake.</p>
+            <p>We assembled a trial team that included forensic accountants and technical experts. Over 18 months of discovery, we uncovered internal emails showing the defendant had deliberately manufactured default claims to avoid payment. At trial, we presented a compelling narrative of bad faith and contractual breach. After three weeks of testimony, the jury returned a unanimous verdict for the full contract value plus interest and legal fees.</p>
+            <p>This case now serves as a precedent in commercial bad faith litigation in the state, and our client was able to expand operations using the recovered funds.</p>
+            <h4>Key Takeaway</h4>
+            <p>Aggressive discovery and expert testimony can dismantle even the largest opponent’s defense.</p>`
+        },
+        case2: {
+            tag: "Medical Malpractice",
+            title: "$12.5M Settlement",
+            award: "Confidential Settlement · Record Amount",
+            headerImg: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>A 42‑year‑old father of three underwent routine gallbladder surgery. Due to a surgical error, his bile duct was severed, leading to sepsis and multi‑organ failure. He died 11 days later. The hospital denied negligence, claiming the injury was a known risk.</p>
+            <p>We retained three independent surgical experts who concluded the standard of care had been violated. Through aggressive pre‑trial motions, we secured admissions from the hospital’s own risk management files. On the eve of trial, the hospital agreed to a $12.5 million settlement – the largest confidential medical malpractice settlement in the county’s history.</p>
+            <p>The funds were placed into a structured trust ensuring long‑term financial security for the surviving children’s education and healthcare.</p>
+            <h4>Key Takeaway</h4>
+            <p>Even powerful medical institutions will settle when confronted with undeniable expert testimony and trial readiness.</p>`
+        },
+        case3: {
+            tag: "Class Action",
+            title: "$180M Consumer Fund",
+            award: "Landmark Class Settlement",
+            headerImg: "https://images.unsplash.com/photo-1551135049-8a33b2fb2f7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>A pharmaceutical company marketed a diabetes drug that caused severe cardiovascular side effects. Thousands of patients suffered heart attacks and strokes. We were appointed co‑lead counsel in a nationwide class action consolidating over 8,000 claims.</p>
+            <p>After two years of litigation, including successful Daubert challenges to the defense’s expert witnesses, we negotiated a $180 million common benefit fund. Each class member received compensation based on injury severity, and the drug’s label was permanently changed to include stronger warnings.</p>
+            <p>The settlement was praised by consumer advocates as a model for mass tort resolution.</p>
+            <h4>Key Takeaway</h4>
+            <p>Class actions can hold even the largest pharmaceutical companies accountable when public health is at risk.</p>`
+        },
+        case4: {
+            tag: "Employment Litigation",
+            title: "$8.7M Whistleblower Verdict",
+            award: "Punitive Damages Included",
+            headerImg: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>A senior vice president of a publicly traded energy company discovered that executives were inflating revenue figures to meet quarterly targets. After internally reporting the fraud, he was fired within two weeks for alleged "performance issues." He came to us seeking justice.</p>
+            <p>We filed a Sarbanes‑Oxley whistleblower claim and parallel state wrongful termination lawsuit. Through forensic accounting, we proved the revenue inflation scheme and the causal link between his report and his termination. The jury awarded $3.2 million in back pay and emotional distress, plus $5.5 million in punitive damages – the largest whistleblower verdict in the state that year.</p>
+            <p>The SEC later opened an investigation based on evidence from our case.</p>
+            <h4>Key Takeaway</h4>
+            <p>Corporate whistleblowers have powerful legal protections – and we are ready to enforce them.</p>`
+        },
+        case5: {
+            tag: "Product Liability",
+            title: "$23M Defective Medical Device",
+            award: "Multi‑Plaintiff Recovery",
+            headerImg: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>A metal‑on‑metal hip implant system was recalled after thousands of patients suffered metallosis, tissue damage, and premature device failure. We represented 14 patients who required revision surgeries and suffered permanent disability.</p>
+            <p>We consolidated the cases in federal court and defeated the manufacturer’s motion for summary judgment by presenting biomechanical evidence showing design defects. After a bellwether trial resulted in a $7.2 million verdict for a single plaintiff, the manufacturer agreed to a global settlement of $23 million for all 14 clients.</p>
+            <p>Each client received compensation for medical expenses, lost wages, and pain and suffering.</p>
+            <h4>Key Takeaway</h4>
+            <p>Medical device litigation requires deep scientific knowledge – and the willingness to take the first case to trial.</p>`
+        },
+        case6: {
+            tag: "Intellectual Property",
+            title: "$15M Trade Secret Theft",
+            award: "Injunction + Damages",
+            headerImg: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+            fullStory: `<p>A startup’s former CTO left to join a competitor, taking proprietary source code and customer algorithms. Within months, the competitor launched a nearly identical product. The startup faced potential collapse.</p>
+            <p>We filed an emergency motion for a temporary restraining order and obtained a forensic imaging of the CTO’s devices. The evidence showed direct copying of thousands of lines of code. After expedited discovery, we secured a permanent injunction barring the competitor from using the stolen technology, plus $15 million in damages covering lost profits and unjust enrichment.</p>
+            <p>The startup later sold for $90 million, citing the successful protection of its IP as a key factor.</p>
+            <h4>Key Takeaway</h4>
+            <p>Swift legal action and digital forensics can stop trade secret theft before irreparable harm occurs.</p>`
+        }
+    };
+
+    // DOM elements
+    const modal = document.getElementById('caseModal');
+    const modalHeader = document.getElementById('modalHeader');
+    const modalTag = document.getElementById('modalTag');
+    const modalBody = document.getElementById('modalBody');
+    const closeModalBtn = document.querySelector('.modal-close');
+    const backModalBtn = document.getElementById('modalBackBtn');
+
+    function openCase(caseId) {
+        const data = caseDetails[caseId];
+        if (!data) return;
+        modalHeader.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${data.headerImg}')`;
+        modalHeader.style.backgroundSize = 'cover';
+        modalHeader.style.backgroundPosition = 'center';
+        modalTag.textContent = data.tag;
+        modalBody.innerHTML = `
+            <h2>${data.title}</h2>
+            <div class="award">${data.award}</div>
+            ${data.fullStory}
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                <p style="font-style: italic; color: #5b6e8c;">* Every case is unique. Past results do not guarantee future outcomes.</p>
+            </div>
+        `;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Event listeners
+    document.querySelectorAll('.case-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            const caseId = card.getAttribute('data-case');
+            if (caseId) openCase(caseId);
+        });
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    backModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Mobile navigation, smooth scroll, intersection observer (same as before)
     const toggleBtn = document.querySelector('.mobile-toggle');
     const navLinks = document.querySelector('.nav-links');
     if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        toggleBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
     }
-
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -685,60 +1007,30 @@
             const target = document.querySelector(targetId);
             if (target) {
                 navLinks?.classList.remove('active');
-                window.scrollTo({
-                    top: target.offsetTop - 90,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
             }
         });
     });
-
-    // INTERSECTION OBSERVER (RE-ANIMATES ON EVERY SCROLL IN/OUT)
-    // For individual elements with .animate-on-scroll
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const staggerParents = document.querySelectorAll('.stagger-children');
-
-    const observerOptions = {
-        threshold: 0.2,          // trigger when 20% of element is visible
-        rootMargin: "0px 0px -20px 0px" // slight offset for smoother feel
-    };
-
-    const handleIntersect = (entries, observer) => {
+    const observerOptions = { threshold: 0.2, rootMargin: "0px 0px -20px 0px" };
+    const handleIntersect = (entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-            } else {
-                entry.target.classList.remove('animated');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('animated');
+            else entry.target.classList.remove('animated');
         });
     };
-
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-    // Observe each animate-on-scroll element
     animatedElements.forEach(el => observer.observe(el));
-
-    // Observe each stagger parent (the grid containers)
     staggerParents.forEach(parent => observer.observe(parent));
-
-    // Also ensure that any element already visible on load gets the class
-    // (the observer will trigger quickly, but we force a small check for consistency)
     window.addEventListener('load', () => {
         animatedElements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                el.classList.add('animated');
-            }
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('animated');
         });
         staggerParents.forEach(parent => {
-            const rect = parent.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                parent.classList.add('animated');
-            }
+            if (parent.getBoundingClientRect().top < window.innerHeight - 100) parent.classList.add('animated');
         });
     });
-
-    // Simulated consultation alert
     const consultBtn = document.getElementById('consultBtn');
     if (consultBtn) {
         consultBtn.addEventListener('click', (e) => {
@@ -746,12 +1038,8 @@
             alert("Thank you for reaching out. A member of our legal team will contact you within 24 hours to schedule your confidential consultation.");
         });
     }
-
-    // Close mobile menu on resize
     window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navLinks?.classList.contains('active')) {
-            navLinks.classList.remove('active');
-        }
+        if (window.innerWidth > 768 && navLinks?.classList.contains('active')) navLinks.classList.remove('active');
     });
 </script>
 </body>
